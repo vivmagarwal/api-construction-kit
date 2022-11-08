@@ -1,6 +1,6 @@
 {
-  "host": "localhost",
+  "host": "lazy-jade-marlin-belt.cyclic.app",
   "host-to-listen": "localhost",
-  "port": "9999",
-  "db": "db.json"
+  "port": "3000",
+  "db": "db-prod.json"
 }
