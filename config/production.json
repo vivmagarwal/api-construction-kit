@@ -1,6 +1,6 @@
 {
-  "host": "mock-api-production.up.railway.app",
-  "host-to-listen": "0.0.0.0",
+  "host": "lazy-jade-marlin-belt.cyclic.app",
+  "host-to-listen": "localhost",
   "port": "80",
   "db": "db-prod.json"
 }
