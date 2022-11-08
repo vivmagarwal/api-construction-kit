@@ -1,0 +1,6 @@
+{
+  "host": "mock-api-production.up.railway.app",
+  "host-to-listen": "0.0.0.0",
+  "port": "80",
+  "db": "db-prod.json"
+}

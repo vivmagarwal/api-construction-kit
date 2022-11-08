@@ -1,0 +1,144 @@
+### Get all users
+GET http://localhost:9999/users
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4uc21pdGgiLCJwYXNzd29yZCI6IiQyYiQxMCRVdHZOUURWQ2lCczJZMExjVTJGZS4uODVTVU9ZYk5NRXpsc1NOcFJ1OVh2YXBLWVVrbEMucSIsImVtYWlsIjoiSm9obkBtYWlsLmNvbSIsImZpcnN0bmFtZSI6IkpvaG4iLCJsYXN0bmFtZSI6IlNtaXRoIiwiYXZhdGFyIjoiaHR0cHM6Ly9jbG91ZGZsYXJlLWlwZnMuY29tL2lwZnMvUW1kM1c1RHVoZ0hpckxIR1ZpeGk2Vjc2TGhDa1pVejZwbkZ0NUFKQml5dkh5ZS9hdmF0YXIvMzA0LmpwZyIsImNyZWF0ZWRBdCI6MTY2NzM4NTM1MTMwNiwiaWQiOjUxLCJpYXQiOjE2NjczODUzODEsImV4cCI6MTY2NzQwNjk4MX0.X0CvKdkJ_cpFmdR7KcxszuZFhua3kYT1ocSKGCv276E
+
+### Register a new user 
+POST http://localhost:9999/user/register
+Content-Type: application/json
+
+    {
+    "username": "john.smith",
+    "firstname": "John",
+    "lastname": "Smith",
+    "email": "John@mail.com",
+    "password": "john.smith",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/304.jpg"
+    }
+
+### 
+POST http://localhost:9999/user/login
+Content-Type: application/json
+
+    {
+      "username": "john.smith",
+      "password": "john.smith"
+    }
+
+###
+POST http://localhost:9999/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4uc21pdGgiLCJwYXNzd29yZCI6IiQyYiQxMCRVdHZOUURWQ2lCczJZMExjVTJGZS4uODVTVU9ZYk5NRXpsc1NOcFJ1OVh2YXBLWVVrbEMucSIsImVtYWlsIjoiSm9obkBtYWlsLmNvbSIsImZpcnN0bmFtZSI6IkpvaG4iLCJsYXN0bmFtZSI6IlNtaXRoIiwiYXZhdGFyIjoiaHR0cHM6Ly9jbG91ZGZsYXJlLWlwZnMuY29tL2lwZnMvUW1kM1c1RHVoZ0hpckxIR1ZpeGk2Vjc2TGhDa1pVejZwbkZ0NUFKQml5dkh5ZS9hdmF0YXIvMzA0LmpwZyIsImNyZWF0ZWRBdCI6MTY2NzM4NTM1MTMwNiwiaWQiOjUxLCJpYXQiOjE2NjczODUzODEsImV4cCI6MTY2NzQwNjk4MX0.X0CvKdkJ_cpFmdR7KcxszuZFhua3kYT1ocSKGCv276E
+Content-Type: application/json
+
+{
+  "title": "test todo item two",
+  "completed": false,
+  "userId": 40
+}
+
+###
+POST http://localhost:9999/photos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVml2ZWsiLCJwYXNzd29yZCI6IiQyYiQxMCROY2pwSWNtU0RyQk9kdjlSTXc5VlUuRjlaZGZ2Z05XS0ZoUGlWb1VZQWV5ZW1LT1h1QlJBMiIsImNyZWF0ZWRBdCI6MTY2NzM2ODMyNzI0OCwiaWQiOjYsImlhdCI6MTY2NzM3MDg1M30.zE7LMLgd4cw2_hYRQ8pYRAhbIkoVH81E9GbA668UdEo
+Content-Type: application/json
+
+{
+  "title": "New image one",
+  "image": "https://loremflickr.com/640/480/random",
+  "thumb": "https://loremflickr.com/150/150/random",
+  "description": "Eveniet error dicta distinctio aliquid. Enim corrupti at illo omnis nihil quo est. Vel id ipsa placeat sed necessitatibus. Eos aspernatur sequi quam eum. Non quod neque ab repellendus ex explicabo deserunt omnis. Velit facere consequatur voluptatem eum. Id delectus perspiciatis maiores aut harum molestias porro mollitia est. Modi qui debitis distinctio voluptatem fugiat eaque ullam. Laudantium aperiam ex ab nisi ipsum quas facilis vero aliquid. Ea maxime dolor magni ad dolores nostrum tenetur accusantium sed. Deserunt at accusantium tempore nisi ullam. Sint ex beatae dolores amet. Doloribus harum error provident quasi nobis beatae voluptatum natus aliquid."
+}
+
+###
+POST http://localhost:9999/comments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVml2ZWsiLCJwYXNzd29yZCI6IiQyYiQxMCROY2pwSWNtU0RyQk9kdjlSTXc5VlUuRjlaZGZ2Z05XS0ZoUGlWb1VZQWV5ZW1LT1h1QlJBMiIsImNyZWF0ZWRBdCI6MTY2NzM2ODMyNzI0OCwiaWQiOjYsImlhdCI6MTY2NzM3MDg1M30.zE7LMLgd4cw2_hYRQ8pYRAhbIkoVH81E9GbA668UdEo
+Content-Type: application/json
+
+{
+  "postId": 145,
+  "title": "doting Tonkinese",
+  "body": "Esse dolor rerum odit soluta culpa repudiandae praesentium iure. Qui laudantium mollitia aliquid in quod cumque blanditiis ipsum. Omnis ut voluptatibus voluptas atque magni. Quia beatae tempora nostrum delectus. Quod necessitatibus culpa sed quaerat quo odio. Mollitia quo numquam reiciendis vitae. Quisquam asperiores error. Consequuntur ad dolorum accusamus magni cupiditate nihil saepe impedit a."
+}
+
+###
+POST http://localhost:9999/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVml2ZWsiLCJwYXNzd29yZCI6IiQyYiQxMCROY2pwSWNtU0RyQk9kdjlSTXc5VlUuRjlaZGZ2Z05XS0ZoUGlWb1VZQWV5ZW1LT1h1QlJBMiIsImNyZWF0ZWRBdCI6MTY2NzM2ODMyNzI0OCwiaWQiOjYsImlhdCI6MTY2NzM3MDg1M30.zE7LMLgd4cw2_hYRQ8pYRAhbIkoVH81E9GbA668UdEo
+Content-Type: application/json
+
+{
+  "title": "My new blog post one",
+  "image": "https://loremflickr.com/640/480/random",
+  "body": "Culpa quos aspernatur dicta at. Neque nihil nam facere quam odit nesciunt molestiae tenetur. Facilis nam ipsum possimus commodi aliquam provident fugit. Quaerat illum culpa pariatur in dolorem non. Aspernatur dolorum quam aspernatur at blanditiis deserunt quia blanditiis veniam. Rem ipsam vitae praesentium delectus commodi distinctio tenetur magni. Adipisci aliquam rem officiis quasi nisi odit. Unde minus nam error repellat rem. Est consectetur exercitationem dicta. Omnis quis accusantium numquam veritatis pariatur. Suscipit deleniti in maxime odit possimus illum."
+}
+
+
+###
+POST http://localhost:9999/cats
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVml2ZWsiLCJwYXNzd29yZCI6IiQyYiQxMCROY2pwSWNtU0RyQk9kdjlSTXc5VlUuRjlaZGZ2Z05XS0ZoUGlWb1VZQWV5ZW1LT1h1QlJBMiIsImNyZWF0ZWRBdCI6MTY2NzM2ODMyNzI0OCwiaWQiOjYsImlhdCI6MTY2NzM3MDg1M30.zE7LMLgd4cw2_hYRQ8pYRAhbIkoVH81E9GbA668UdEo
+Content-Type: application/json
+
+{
+  "name": "Cute new cat",
+  "cost": 40.64,
+  "likes": 90,
+  "image": "https://loremflickr.com/640/480/cats",
+  "description": "Laudantium earum dignissimos saepe aliquid modi. Nemo perspiciatis consectetur totam aliquam officiis dolorum numquam. Doloremque nisi nam reprehenderit voluptas maxime. Hic rem vel rem id ipsum.",
+  "breed": "Siamese"
+}
+
+### Get all 50 cats
+GET http://localhost:9999/cats
+
+### Get cat with id 1
+GET http://localhost:9999/cats/1
+
+### Get all cats with 737 likes
+GET http://localhost:9999/cats?likes=737
+
+### Get all comments in post 1
+GET http://localhost:9999/posts/1/comments
+
+### Get all photos of user 1
+GET http://localhost:9999/users/1/photos
+
+### Get all cats, limit results to 15, get first page.
+GET http://localhost:9999/cats?_page=1&_limit=15
+
+###
+GET http://localhost:9999/cats?name=Yasmeen&breed=Japanese Bobtail
+
+###
+GET http://localhost:9999/products?_sort=name&order=DESC
+
+###
+GET http://localhost:9999/books
+
+###
+GET http://localhost:9999/cats?_sort=likes,cost&_order=desc,asc
+
+
+###
+GET http://localhost:9999/cats?_start=20&_end=30
+
+
+###
+GET http://localhost:9999/cats?_start=20&_limit=10
+
+###
+GET http://localhost:9999/cats?likes_gte=10&likes_lte=20
+
+### Add _ne to exclude a value
+GET http://localhost:9999/cats?id_ne=1
+
+### _like to filter (RegExp supported)
+GET http://localhost:9999/cats?breed_like=Sia
+
+### full-text search
+GET http://localhost:9999/cats?q=exercitationem
+
+### To include children resources, add _embed
+GET http://localhost:9999/posts?_embed=comments
+
+### To include parent resource, add _expand
+GET http://localhost:9999/posts?_expand=user
+
+### Recipe Categories
+GET http://localhost:9999/recipeCategories
