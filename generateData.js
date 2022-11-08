@@ -12,7 +12,6 @@ import config from 'config';
 
 
 var database = {
-  cats: [],
   users: [],
   posts: [],
   comments: [],
@@ -27,18 +26,18 @@ var database = {
 };
 
 // 50 cats for simple apps
-for (var i = 1; i <= 336; i++) {
-  database.cats.push({
-    id: i,
-    name: faker.name.firstName(),
-    cost: roundToTwo(Math.random() * 100),
-    likes: Math.round(Math.random() * 1000),
-    image: encodeURI(`http://${config.get('host')}/images/cat/cat-unsplash-${i}.jpg`),
-    description: faker.lorem.paragraph(),
-    breed: faker.animal.cat(),
-    createdAt: Date.now(),
-  });
-}
+// for (var i = 1; i <= 336; i++) {
+//   database.cats.push({
+//     id: i,
+//     name: faker.name.firstName(),
+//     cost: roundToTwo(Math.random() * 100),
+//     likes: Math.round(Math.random() * 1000),
+//     image: encodeURI(`http://${config.get('host')}/images/cat/cat-unsplash-${i}.jpg`),
+//     description: faker.lorem.paragraph(),
+//     breed: faker.animal.cat(),
+//     createdAt: Date.now(),
+//   });
+// }
 
 // admin user with admin as password
 // total 50 users created
