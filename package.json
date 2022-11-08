@@ -17,8 +17,7 @@
     "generate-prod": "NODE_ENV=production node generateData.js > db-prod.json",
     "generate": "npm run generate-dev && npm run generate-prod",
     "dev": "NODE_ENV=development node server.js",
-    "start": "npm run generate-prod && NODE_ENV=production node server.js",
-    "test": "NODE_ENV=development node testConfig.js"
+    "start": "NODE_ENV=production node server.js"
   },
   "author": "",
   "license": "ISC",
