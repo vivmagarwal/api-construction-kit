@@ -189,7 +189,7 @@ const PORT = config.get('port');
 const HOST_TO_LISTEN = config.get('host-to-listen');
 
 
-server.listen(PORT, HOST_TO_LISTEN, () => {
+server.listen(PORT, () => {
   console.log(
     `JSON Server is running...`
   );
