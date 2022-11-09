@@ -1,8 +1,13 @@
 <html>
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>MOCK Server</title>
   </head>
 
@@ -11,9 +16,7 @@
       <div class="container">
         <nav>
           <ul>
-            <li class="title">
-              MOCK Server - optimized for cyclic deployment
-            </li>
+            <li class="title">MOCK Server - optimized for cyclic deployment</li>
           </ul>
         </nav>
       </div>
@@ -29,9 +32,7 @@
 
         <div id="resources"></div>
 
-        <p>
-          To access and modify resources, you can use any HTTP method:
-        </p>
+        <p>To access and modify resources, you can use any HTTP method:</p>
         <p>
           <code>GET</code>
           <code>POST</code>
@@ -43,7 +44,20 @@
 
         <div id="custom-routes"></div>
 
-        <hr>
+        <hr />
+        <p>
+          To access and modify `cats`, you can use any HTTP method: `GET` `POST`
+          `PUT` `PATCH` `DELETE` OPTIONS
+        </p>
+        
+        <p>
+          For all other routes `GET` is open but all other HTTP methods requires
+          Authentication.
+        </p>
+
+        <p>For the `/orders` route, all methods are protected.</p>
+
+        <hr />
 
         <h1>Documentation</h1>
         <p>
@@ -55,9 +69,7 @@
 
     <footer>
       <div class="container">
-        <p>
-
-        </p>
+        <p></p>
       </div>
     </footer>
 

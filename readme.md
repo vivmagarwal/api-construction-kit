@@ -19,7 +19,13 @@ http://localhost:9999/
 https://www.loom.com/share/f4d8c58a0e224aebbbd0d20fbe946928
 
 ## Node version
-v16.18.0
+v16.x
+
+## Deploy to [Cyclic.sh](https://app.cyclic.sh/#/join/vivmagarwal) in 2 minutes.
+https://www.loom.com/share/6af88bcc45b74c19845a83457e792964
+
+## Local server in 2 minutes
+https://www.loom.com/share/a1b18ff5449e41109d8f6b3bb2e46867
 
 ## Resources
 `/cats` 336x
@@ -44,6 +50,8 @@ v16.18.0
 
 `/recipeTags` 73x
 
+<hr>
+
 To access and modify `cats`, you can use any HTTP method:
 `GET` `POST` `PUT` `PATCH` `DELETE` OPTIONS
 
@@ -51,7 +59,7 @@ For all other routes `GET` is open but all other HTTP methods requires Authentic
 
 For the `/orders` route, all methods are protected.
 
-
+<hr>
 
 ## Authentication
 ### Register a new user 
