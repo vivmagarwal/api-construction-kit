@@ -185,11 +185,10 @@ function generateAccessToken(user) {
 server.use(router);
 
 
-const PORT = config.get('port');
-const HOST_TO_LISTEN = config.get('host-to-listen');
+const PORT = process.env.NODE_ENV == 'development' ? `http://localhost:${config.get('port')}/` : `PORT: ${config.get('port')}`
 
-server.listen(PORT, () => {
+server.listen(9999, () => {
   console.log(
-    `JSON Server is running... ${process.env.NODE_ENV} ... ${PORT}...`
+    `JSON Server is running at ${PORT} in ${process.env.NODE_ENV} ENV.`
   );
 });

@@ -1,6 +1,5 @@
 {
   "host": "localhost",
-  "host-to-listen": "localhost",
   "port": "9999",
   "db": "db.json"
 }

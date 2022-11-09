@@ -13,9 +13,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "generate-dev": "NODE_ENV=development node generateData.js > db.json",
-    "generate-prod": "NODE_ENV=production node generateData.js > db-prod.json",
-    "generate": "npm run generate-dev && npm run generate-prod",
+    "generate": "node generateData.js > db.json",
     "dev": "NODE_ENV=development node server.js",
     "start": "NODE_ENV=production node server.js"
   },
