@@ -3,7 +3,16 @@
 ## Installation
 ```
 npm i
-npm start
+```
+
+## Run the server in development (local) environment
+```
+npm run dev
+```
+
+## Access the server
+```
+http://localhost:9999/
 ```
 
 ## How to video
@@ -13,32 +22,34 @@ https://www.loom.com/share/f4d8c58a0e224aebbbd0d20fbe946928
 v16.18.0
 
 ## Resources
-/cats 336x
+`/cats` 336x
 
-/users 50x
+`/users` 50x
 
-/posts 500x
+`/posts` 500x
 
-/comments 5000x
+`/comments` 5000x
 
-/photos 1000x
+`/photos` 1000x
 
-/todos 500x
+`/todos` 500x
 
-/recipeCategories 14x
+`/recipeCategories` 14x
 
-/recipeIngredients 570x
+`/recipeIngredients` 570x
 
-/recipes 284x
+`/recipes` 284x
 
-/areas 25x
+`/areas` 25x
 
-/recipeTags 73x
+`/recipeTags` 73x
 
 To access and modify `cats`, you can use any HTTP method:
 `GET` `POST` `PUT` `PATCH` `DELETE` OPTIONS
 
 For all other routes `GET` is open but all other HTTP methods requires Authentication.
+
+For the `/orders` route, all methods are protected.
 
 
 

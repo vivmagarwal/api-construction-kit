@@ -186,10 +186,9 @@ server.use(router);
 
 
 const PORT = config.get('port');
-const HOST_TO_LISTEN = config.get('host-to-listen');
 
 server.listen(PORT, () => {
   console.log(
-    `JSON Server is running... ${process.env.NODE_ENV} ... ${PORT}...`
+    `JSON Server is running at PORT:${PORT} in ${process.env.NODE_ENV} ENV.`
   );
 });

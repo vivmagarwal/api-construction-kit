@@ -9,9 +9,16 @@ dotenv.config();
 
 import config from 'config';
 
+let PROTOCOL = 'http://';
+let HOST = config.get('host');
+let PORT = config.get('port');
+const ABSOLUTE_IMG_URL = false;
+let HOST_FOR_IMAGE = ABSOLUTE_IMG_URL ? HOST == 'localhost' ? `${PROTOCOL}${HOST}:${PORT}` : `${PROTOCOL}${HOST}` : '' ;
+
 
 
 var database = {
+  cats: [],
   users: [],
   posts: [],
   comments: [],
@@ -25,19 +32,20 @@ var database = {
   orders: []
 };
 
-// 50 cats for simple apps
-// for (var i = 1; i <= 336; i++) {
-//   database.cats.push({
-//     id: i,
-//     name: faker.name.firstName(),
-//     cost: roundToTwo(Math.random() * 100),
-//     likes: Math.round(Math.random() * 1000),
-//     image: encodeURI(`http://${config.get('host')}/images/cat/cat-unsplash-${i}.jpg`),
-//     description: faker.lorem.paragraph(),
-//     breed: faker.animal.cat(),
-//     createdAt: Date.now(),
-//   });
-// }
+// 336 cats for simple apps
+for (var i = 1; i <= 336; i++) {
+  database.cats.push({
+    id: i,
+    name: faker.name.firstName(),
+    cost: roundToTwo(Math.random() * 100),
+    likes: Math.round(Math.random() * 1000),
+    image: encodeURI(`${HOST_FOR_IMAGE}/images/cat/cat-unsplash-${i}.jpg`),
+    thumb: encodeURI(`${HOST_FOR_IMAGE}/images/cat/cat-unsplash-${i}-thumb.jpg`),
+    description: faker.lorem.paragraph(),
+    breed: faker.animal.cat(),
+    createdAt: Date.now(),
+  });
+}
 
 // admin user with admin as password
 // total 50 users created
@@ -121,7 +129,7 @@ recipeCategories.forEach((item) => {
   database.recipeCategories.push({
     id: item.idCategory,
     name: item.strCategory,
-    image: `http://${config.get('host')}/images/recipe-category/${item.strCategory.toLowerCase()}.png`,
+    image: `${HOST_FOR_IMAGE}/images/recipe-category/${item.strCategory.toLowerCase()}.png`,
     description: item.strCategoryDescription,
     createdAt: Date.now(),
   });
@@ -138,7 +146,7 @@ ingredients.forEach((item) => {
   database.recipeIngredients.push({
     id: item.idIngredient,
     name: item.strIngredient,
-    image: encodeURI(`http://${config.get('host')}/images/recipe-ingredient/${item.strIngredient}.png`),
+    image: encodeURI(`${HOST_FOR_IMAGE}/images/recipe-ingredient/${item.strIngredient}.png`),
     description: item.strDescription,
     createdAt: Date.now(),
   });
@@ -189,7 +197,7 @@ recipes.forEach((item) => {
 
 recipes.forEach((item) => {
   let filename = item.strMealThumb.split('/').pop().split('#')[0].split('?')[0];
-  let imgPath = encodeURI(`http://${config.get('host')}/images/meals/${filename}`);
+  let imgPath = encodeURI(`${HOST_FOR_IMAGE}/images/meals/${filename}`);
   let tagsArray = [];
 
   if (item.strTags) {
