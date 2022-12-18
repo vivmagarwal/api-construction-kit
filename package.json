@@ -15,7 +15,8 @@
   "scripts": {
     "generate": "node generateData.js > db.json",
     "dev": "NODE_ENV=development node server.js",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "build": "echo \"Hello World\""
   },
   "author": "",
   "license": "ISC",
