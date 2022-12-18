@@ -1,31 +1,31 @@
 ### Get all users
-GET http://localhost:9999/users
+GET http://localhost:9090/users
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4uc21pdGgiLCJwYXNzd29yZCI6IiQyYiQxMCRVdHZOUURWQ2lCczJZMExjVTJGZS4uODVTVU9ZYk5NRXpsc1NOcFJ1OVh2YXBLWVVrbEMucSIsImVtYWlsIjoiSm9obkBtYWlsLmNvbSIsImZpcnN0bmFtZSI6IkpvaG4iLCJsYXN0bmFtZSI6IlNtaXRoIiwiYXZhdGFyIjoiaHR0cHM6Ly9jbG91ZGZsYXJlLWlwZnMuY29tL2lwZnMvUW1kM1c1RHVoZ0hpckxIR1ZpeGk2Vjc2TGhDa1pVejZwbkZ0NUFKQml5dkh5ZS9hdmF0YXIvMzA0LmpwZyIsImNyZWF0ZWRBdCI6MTY2NzM4NTM1MTMwNiwiaWQiOjUxLCJpYXQiOjE2NjczODUzODEsImV4cCI6MTY2NzQwNjk4MX0.X0CvKdkJ_cpFmdR7KcxszuZFhua3kYT1ocSKGCv276E
 
 ### Register a new user 
-POST http://localhost:9999/user/register
+POST http://localhost:9090/register
 Content-Type: application/json
 
     {
-    "username": "john.smith",
-    "firstname": "John",
-    "lastname": "Smith",
-    "email": "John@mail.com",
-    "password": "john.smith",
+    "username": "alibaba",
+    "firstname": "ali",
+    "lastname": "baba",
+    "email": "ali@mail.com",
+    "password": "alibaba",
     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/304.jpg"
     }
 
 ### 
-POST http://localhost:9999/user/login
+POST http://localhost:9090/login
 Content-Type: application/json
 
     {
-      "username": "john.smith",
-      "password": "john.smith"
+      "username": "alibaba",
+      "password": "alibaba"
     }
 
 ###
-POST http://localhost:9999/todos
+POST http://localhost:9090/todos
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4uc21pdGgiLCJwYXNzd29yZCI6IiQyYiQxMCRVdHZOUURWQ2lCczJZMExjVTJGZS4uODVTVU9ZYk5NRXpsc1NOcFJ1OVh2YXBLWVVrbEMucSIsImVtYWlsIjoiSm9obkBtYWlsLmNvbSIsImZpcnN0bmFtZSI6IkpvaG4iLCJsYXN0bmFtZSI6IlNtaXRoIiwiYXZhdGFyIjoiaHR0cHM6Ly9jbG91ZGZsYXJlLWlwZnMuY29tL2lwZnMvUW1kM1c1RHVoZ0hpckxIR1ZpeGk2Vjc2TGhDa1pVejZwbkZ0NUFKQml5dkh5ZS9hdmF0YXIvMzA0LmpwZyIsImNyZWF0ZWRBdCI6MTY2NzM4NTM1MTMwNiwiaWQiOjUxLCJpYXQiOjE2NjczODUzODEsImV4cCI6MTY2NzQwNjk4MX0.X0CvKdkJ_cpFmdR7KcxszuZFhua3kYT1ocSKGCv276E
 Content-Type: application/json
 
@@ -36,7 +36,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:9999/photos
+POST http://localhost:9090/photos
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVml2ZWsiLCJwYXNzd29yZCI6IiQyYiQxMCROY2pwSWNtU0RyQk9kdjlSTXc5VlUuRjlaZGZ2Z05XS0ZoUGlWb1VZQWV5ZW1LT1h1QlJBMiIsImNyZWF0ZWRBdCI6MTY2NzM2ODMyNzI0OCwiaWQiOjYsImlhdCI6MTY2NzM3MDg1M30.zE7LMLgd4cw2_hYRQ8pYRAhbIkoVH81E9GbA668UdEo
 Content-Type: application/json
 
@@ -48,7 +48,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:9999/comments
+POST http://localhost:9090/comments
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVml2ZWsiLCJwYXNzd29yZCI6IiQyYiQxMCROY2pwSWNtU0RyQk9kdjlSTXc5VlUuRjlaZGZ2Z05XS0ZoUGlWb1VZQWV5ZW1LT1h1QlJBMiIsImNyZWF0ZWRBdCI6MTY2NzM2ODMyNzI0OCwiaWQiOjYsImlhdCI6MTY2NzM3MDg1M30.zE7LMLgd4cw2_hYRQ8pYRAhbIkoVH81E9GbA668UdEo
 Content-Type: application/json
 
@@ -59,7 +59,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:9999/posts
+POST http://localhost:9090/posts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVml2ZWsiLCJwYXNzd29yZCI6IiQyYiQxMCROY2pwSWNtU0RyQk9kdjlSTXc5VlUuRjlaZGZ2Z05XS0ZoUGlWb1VZQWV5ZW1LT1h1QlJBMiIsImNyZWF0ZWRBdCI6MTY2NzM2ODMyNzI0OCwiaWQiOjYsImlhdCI6MTY2NzM3MDg1M30.zE7LMLgd4cw2_hYRQ8pYRAhbIkoVH81E9GbA668UdEo
 Content-Type: application/json
 
@@ -71,7 +71,7 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:9999/cats
+POST http://localhost:9090/cats
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVml2ZWsiLCJwYXNzd29yZCI6IiQyYiQxMCROY2pwSWNtU0RyQk9kdjlSTXc5VlUuRjlaZGZ2Z05XS0ZoUGlWb1VZQWV5ZW1LT1h1QlJBMiIsImNyZWF0ZWRBdCI6MTY2NzM2ODMyNzI0OCwiaWQiOjYsImlhdCI6MTY2NzM3MDg1M30.zE7LMLgd4cw2_hYRQ8pYRAhbIkoVH81E9GbA668UdEo
 Content-Type: application/json
 
@@ -85,60 +85,60 @@ Content-Type: application/json
 }
 
 ### Get all 50 cats
-GET http://localhost:9999/cats
+GET http://localhost:9090/cats
 
 ### Get cat with id 1
-GET http://localhost:9999/cats/1
+GET http://localhost:9090/cats/1
 
 ### Get all cats with 737 likes
-GET http://localhost:9999/cats?likes=737
+GET http://localhost:9090/cats?likes=737
 
 ### Get all comments in post 1
-GET http://localhost:9999/posts/1/comments
+GET http://localhost:9090/posts/1/comments
 
 ### Get all photos of user 1
-GET http://localhost:9999/users/1/photos
+GET http://localhost:9090/users/1/photos
 
 ### Get all cats, limit results to 15, get first page.
-GET http://localhost:9999/cats?_page=1&_limit=15
+GET http://localhost:9090/cats?_page=1&_limit=15
 
 ###
-GET http://localhost:9999/cats?name=Yasmeen&breed=Japanese Bobtail
+GET http://localhost:9090/cats?name=Yasmeen&breed=Japanese Bobtail
 
 ###
-GET http://localhost:9999/products?_sort=name&order=DESC
+GET http://localhost:9090/products?_sort=name&order=DESC
 
 ###
-GET http://localhost:9999/books
+GET http://localhost:9090/books
 
 ###
-GET http://localhost:9999/cats?_sort=likes,cost&_order=desc,asc
-
-
-###
-GET http://localhost:9999/cats?_start=20&_end=30
+GET http://localhost:9090/cats?_sort=likes,cost&_order=desc,asc
 
 
 ###
-GET http://localhost:9999/cats?_start=20&_limit=10
+GET http://localhost:9090/cats?_start=20&_end=30
+
 
 ###
-GET http://localhost:9999/cats?likes_gte=10&likes_lte=20
+GET http://localhost:9090/cats?_start=20&_limit=10
+
+###
+GET http://localhost:9090/cats?likes_gte=10&likes_lte=20
 
 ### Add _ne to exclude a value
-GET http://localhost:9999/cats?id_ne=1
+GET http://localhost:9090/cats?id_ne=1
 
 ### _like to filter (RegExp supported)
-GET http://localhost:9999/cats?breed_like=Sia
+GET http://localhost:9090/cats?breed_like=Sia
 
 ### full-text search
-GET http://localhost:9999/cats?q=exercitationem
+GET http://localhost:9090/cats?q=exercitationem
 
 ### To include children resources, add _embed
-GET http://localhost:9999/posts?_embed=comments
+GET http://localhost:9090/posts?_embed=comments
 
 ### To include parent resource, add _expand
-GET http://localhost:9999/posts?_expand=user
+GET http://localhost:9090/posts?_expand=user
 
 ### Recipe Categories
-GET http://localhost:9999/recipeCategories
+GET http://localhost:9090/recipeCategories

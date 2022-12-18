@@ -1,8 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import config from 'config';
-
 import jsonServer from "json-server";
 import path from "path";
 import { join, dirname } from "node:path";
@@ -12,41 +10,41 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { LowSync } from "lowdb";
 import { JSONFileSync } from "lowdb/node";
-import express from "express";
+
+import protectedRoutesConfig from "./serverConfig.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const uid = new ShortUniqueId({ length: 10 });
 
-const file = path.join(__dirname, config.get('db'));
+const dbFile = process.env.DB;
+const serverPort = process.env.REACT_APP_JSON_SERVER_PORT;
+const staticDirectoryName = process.env.STATIC_FILES;
+
+const file = path.join(__dirname, dbFile);
 const adapter = new JSONFileSync(file);
 const db = new LowSync(adapter);
+
 // db.read();
 // db.data.users.push({ three: "four" });
 // db.write();
 
 const server = jsonServer.create();
-const router = jsonServer.router(join(__dirname, config.get('db')));
-const middlewares = jsonServer.defaults();
+
+// foreign key suffix as second parameter to the module. Below code sets it to dummy
+// it fixes delete problem but causes expansion problems.
+const router = jsonServer.router(join(__dirname, dbFile),{
+  foreignKeySuffix: 'dummy'
+});
+
+const staticDir = path.join(__dirname, staticDirectoryName);
+const middlewares = jsonServer.defaults({static: staticDir});
 
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
-server.use(express.static("public"));
 
 // config
-const protectedRoutes = [
-  { route: "/users", methods: ["POST", "PUT", "DELETE", "PATCH"] },
-  { route: "/posts", methods: ["POST", "PUT", "DELETE", "PATCH"] },
-  { route: "/comments", methods: ["POST", "PUT", "DELETE", "PATCH"] },
-  { route: "/photos", methods: ["POST", "PUT", "DELETE", "PATCH"] },
-  { route: "/todos", methods: ["POST", "PUT", "DELETE", "PATCH"] },
-  { route: "/recipeCategories", methods: ["POST", "PUT", "DELETE", "PATCH"] },
-  { route: "/recipeIngredients", methods: ["POST", "PUT", "DELETE", "PATCH"] },
-  { route: "/recipes", methods: ["POST", "PUT", "DELETE", "PATCH"] },
-  { route: "/areas", methods: ["POST", "PUT", "DELETE", "PATCH"] },
-  { route: "/recipeTags", methods: ["POST", "PUT", "DELETE", "PATCH"] },
-  { route: "/orders", methods: ["GET", "POST", "PUT", "DELETE", "PATCH"] },
-];
+const protectedRoutes = protectedRoutesConfig.protectedRoutes;
 
 // Authorization logic
 server.use((req, res, next) => {
@@ -55,7 +53,9 @@ server.use((req, res, next) => {
   for (let i = 0; i < protectedRoutes.length; i++) {
     let { route, methods } = protectedRoutes[i];
 
-    if (route === req.url) {
+    // if ((route === 'GET' && ))
+
+    if ((req.url).startsWith(route)) {
       if (methods.includes(req.method)) {
         NeedsAuthorization = true;
         break;
@@ -78,7 +78,6 @@ server.use((req, res, next) => {
         return res
           .status(403)
           .send("Some error occurred wile verifying token.");
-
       req.user = user;
       next();
     });
@@ -87,7 +86,7 @@ server.use((req, res, next) => {
   }
 });
 
-// default id & created at
+// default id & created at 
 server.use((req, res, next) => {
   if (req.method === "POST") {
     req.body.createdAt = Date.now();
@@ -105,7 +104,7 @@ server.use((req, res, next) => {
 });
 
 // registration logic
-server.post("/user/register", (req, res) => {
+server.post("/register", (req, res) => {
   if (
     !req.body ||
     !req.body.username ||
@@ -145,7 +144,7 @@ server.post("/user/register", (req, res) => {
 });
 
 // login/sign in logic
-server.post("/user/login", (req, res) => {
+server.post("/login", (req, res) => {
   if (!req.body || !req.body.username || !req.body.password) {
     return res
       .status(400)
@@ -164,6 +163,7 @@ server.post("/user/login", (req, res) => {
     const accessToken = generateAccessToken(user);
     return res.send({
       accessToken: accessToken,
+      user: user
     });
   } else {
     res.send("Not allowed, name/password mismatch.");
@@ -171,7 +171,7 @@ server.post("/user/login", (req, res) => {
 });
 
 function generateAccessToken(user) {
-  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "6h" });
+  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "3h" });
 }
 
 // To modify responses, overwrite router.render method:
@@ -185,9 +185,9 @@ function generateAccessToken(user) {
 server.use(router);
 
 
-const PORT = process.env.NODE_ENV == 'development' ? `http://localhost:${config.get('port')}/` : `PORT: ${config.get('port')}`
+const PORT = process.env.NODE_ENV == 'development' ? `http://localhost:${+serverPort}/` : `PORT: ${+serverPort}`
 
-server.listen(9999, () => {
+server.listen(+serverPort, () => {
   console.log(
     `JSON Server is running at ${PORT} in ${process.env.NODE_ENV} ENV.`
   );
