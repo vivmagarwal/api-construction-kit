@@ -17,9 +17,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const uid = new ShortUniqueId({ length: 10 });
 
-const dbFile = process.env.DB;
-const serverPort = process.env.REACT_APP_JSON_SERVER_PORT;
-const staticDirectoryName = process.env.STATIC_FILES;
+const dbFile = process.env.DB || 'db.json';
+const serverPort = process.env.REACT_APP_JSON_SERVER_PORT || 9090;
+const staticDirectoryName = process.env.STATIC_FILES || 'server-files';
 
 const file = path.join(__dirname, dbFile);
 const adapter = new JSONFileSync(file);
@@ -73,7 +73,7 @@ server.use((req, res, next) => {
           "Its a protected route/method. You need an auth token to access it."
         );
 
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET || "62a798775294eda38d9d5bdb57cfae9d1fff7a550c11c06ef2888fc1af641c09291d17f07f04156356fd86223256fbcc026e791a80a876fe7b14d4ba30ec185d", (err, user) => {
       if (err)
         return res
           .status(403)
@@ -171,7 +171,7 @@ server.post("/login", (req, res) => {
 });
 
 function generateAccessToken(user) {
-  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "3h" });
+  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET || "62a798775294eda38d9d5bdb57cfae9d1fff7a550c11c06ef2888fc1af641c09291d17f07f04156356fd86223256fbcc026e791a80a876fe7b14d4ba30ec185d", { expiresIn: "3h" });
 }
 
 // To modify responses, overwrite router.render method:
@@ -184,11 +184,13 @@ function generateAccessToken(user) {
 
 server.use(router);
 
+let nodeEnv = process.env.NODE_ENV || 'production'
 
-const PORT = process.env.NODE_ENV == 'development' ? `http://localhost:${+serverPort}/` : `PORT: ${+serverPort}`
+
+const PORT = nodeEnv == 'development' ? `http://localhost:${+serverPort}/` : `PORT: ${+serverPort}`
 
 server.listen(+serverPort, () => {
   console.log(
-    `JSON Server is running at ${PORT} in ${process.env.NODE_ENV} ENV.`
+    `JSON Server is running at ${PORT} in ${nodeEnv } ENV.`
   );
 });
