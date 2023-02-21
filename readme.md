@@ -1,4 +1,8 @@
-# API Construction kit (optimized for cyclic deployment)
+# API Construction kit (optimized for cyclic deployment) [DO NOT USE]
+
+# ** IMPORTANT UPDATE **
+
+## Because of recent changes in the cyclic file system settings, the CRUD operations are not working any more with this setup. Please reach out to your associates for an alternative API system.
 
 ## Overview
 This setup is based on JSON-Server. JWT Authentication & Route protection is working out of the box. Several API endpoints has been created for you to create any app of your choice. You are free to add your own endpoints by adding a new key to db.json file. Static files like images may be served from `server-files/images` directory. You can customize route protection from the `serverConfig.js` file. Creating a new entry in db.json file would add a new route for you & you are free to create any fields at runtime. `Id` if not provided will be auto created.
